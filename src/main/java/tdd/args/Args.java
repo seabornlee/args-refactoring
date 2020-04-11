@@ -11,6 +11,6 @@ public class Args {
     }
 
     public Object getValue(String name) {
-        return schema.getValue(name, command.getValue(name));
+        return schema.getValueInType(name, command.getValue(name));
     }
 }

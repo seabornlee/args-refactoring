@@ -1,7 +1,5 @@
 package tdd.args;
 
-import com.google.common.base.Strings;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,37 +18,53 @@ public class Schema {
 
     }
 
-    public Object getValue(String name, String value) {
-        if (!schames.containsKey(name)) {
-            return "Please enter a valid command";
+    public Object getValueInType(String name, String valueInText) {
+        if (schames.containsKey(name)) {
+            String type = schames.get(name);
+            return getValueByType(valueInText, type);
         }
-        String type = schames.get(name);
+        return "Please enter a valid command";
+    }
+
+    private Object getValueByType(String valueInText, String type) {
         switch (type) {
             case "boolean":
-                if (isEmpty(value)) {
-                    return Boolean.FALSE;
-                }
-                if (!value.toLowerCase().equals("true") && !value.toLowerCase().equals("false")) {
-                    return "只能输入Boolean类型的值";
-                } else {
-                    return "true".equalsIgnoreCase(value);
-                }
+                return getBooleanValue(valueInText);
             case "int":
-                if (isEmpty(value)) {
-                    return 0;
-                }
-                try {
-                    Integer.parseInt(value);
-                } catch (Exception e) {
-                    return "只能输入Integer类型的值";
-                }
-
-                return Integer.parseInt(value);
+                return getIntValue(valueInText);
             default:
-                if (isEmpty(value)) {
-                    return "default";
-                }
-                return value;
+                return getStringValue(valueInText);
+        }
+    }
+
+    private Object getStringValue(String value) {
+        if (isEmpty(value)) {
+            return "default";
+        }
+        return value;
+    }
+
+    private Object getIntValue(String value) {
+        if (isEmpty(value)) {
+            return 0;
+        }
+        try {
+            Integer.parseInt(value);
+        } catch (Exception e) {
+            return "只能输入Integer类型的值";
+        }
+
+        return Integer.parseInt(value);
+    }
+
+    private Object getBooleanValue(String value) {
+        if (isEmpty(value)) {
+            return Boolean.FALSE;
+        }
+        if (!value.toLowerCase().equals("true") && !value.toLowerCase().equals("false")) {
+            return "只能输入Boolean类型的值";
+        } else {
+            return "true".equalsIgnoreCase(value);
         }
     }
 
