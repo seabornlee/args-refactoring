@@ -24,7 +24,7 @@ public class Command {
         }
     }
 
-    public String getValue(String name) {
+    public String getStringValue(String name) {
         return commands.get(name);
     }
 
@@ -37,6 +37,4 @@ public class Command {
         }
         return true;
     }
-
-
 }
