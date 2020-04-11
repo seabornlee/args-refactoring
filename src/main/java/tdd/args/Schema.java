@@ -1,5 +1,7 @@
 package tdd.args;
 
+import com.google.common.primitives.Booleans;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,11 +62,15 @@ public class Schema {
         if (isEmpty(value)) {
             return Boolean.FALSE;
         }
-        if (!value.toLowerCase().equals("true") && !value.toLowerCase().equals("false")) {
-            return "只能输入Boolean类型的值";
+        if (isaBoolean(value.toLowerCase())) {
+            return Boolean.valueOf(value);
         } else {
-            return "true".equalsIgnoreCase(value);
+            return "只能输入Boolean类型的值";
         }
+    }
+
+    private boolean isaBoolean(String lowerCaseValue) {
+        return lowerCaseValue.equals("true") || lowerCaseValue.equals("false");
     }
 
     private boolean isEmpty(String value) {
