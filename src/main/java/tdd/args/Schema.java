@@ -1,26 +1,25 @@
 package tdd.args;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.util.Arrays.asList;
+
 public class Schema {
-    Map<String, String> schames;
+    private Map<String, String> keyTypeMap;
 
-    public Schema(String schameConfig) {
-
-        schames = new HashMap<>();
-        Arrays.asList(schameConfig.split(","))
-                .forEach(flag -> {
-                    String[] nameValue = flag.split(":");
-                    schames.put(nameValue[0], nameValue[1]);
+    public Schema(String schemaConfig) {
+        keyTypeMap = new HashMap<>();
+        asList(schemaConfig.split(","))
+                .forEach(keyTypePair -> {
+                    String[] nameValue = keyTypePair.split(":");
+                    keyTypeMap.put(nameValue[0], nameValue[1]);
                 });
-
     }
 
     public Object getValueInType(String name, String valueInText) {
-        if (schames.containsKey(name)) {
-            String type = schames.get(name);
+        if (keyTypeMap.containsKey(name)) {
+            String type = keyTypeMap.get(name);
             return getValueByType(valueInText, type);
         }
         return "Please enter a valid command";
