@@ -40,19 +40,11 @@ public class ArgsTest {
     }
 
     @Test
-    public void command_not_complete() {
+    public void should_get_default_value_by_type_given_incomplete_command() {
         Args args = new Args("l:boolean,p:int,d:String", "-d /user/local");
         assertEquals(args.getValue("l"), Boolean.FALSE);
         assertEquals(args.getValue("p"), 0);
         assertEquals(args.getValue("d"), "/user/local");
-    }
-
-    @Test
-    public void more_test() {
-        Args args = new Args("b:boolean,i:int,s:String", "-s /user/local");
-        assertEquals(args.getValue("b"), Boolean.FALSE);
-        assertEquals(args.getValue("i"), 0);
-        assertEquals(args.getValue("s"), "/user/local");
     }
 
     @Test
