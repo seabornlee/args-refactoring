@@ -16,7 +16,7 @@ public class ArgsTest {
     }
 
     @Test
-    public void hava_no_value_test() {
+    public void have_no_value_test() {
         Args args = new Args("l:boolean,p:int,d:String", "-l -p 8080 -d /user/local");
         assertEquals(args.getValue("l"), Boolean.FALSE);
         assertEquals(args.getValue("p"), 8080);
@@ -24,7 +24,7 @@ public class ArgsTest {
     }
 
     @Test
-    public void hava_negative_number_test() {
+    public void have_negative_number_test() {
         Args args = new Args("l:boolean,p:int,d:String", "-l true -p -9 -d /user/local");
         assertEquals(args.getValue("l"), Boolean.TRUE);
         assertEquals(args.getValue("p"), -9);
@@ -48,7 +48,7 @@ public class ArgsTest {
     }
 
     @Test
-    public void command_not_match_schame() {
+    public void command_not_match_schema() {
         Args args = new Args("b:boolean,i:int,s:String", "-d hello");
         assertEquals(args.getValue("b"), Boolean.FALSE);
         assertEquals(args.getValue("i"), 0);
