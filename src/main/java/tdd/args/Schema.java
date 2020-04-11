@@ -6,10 +6,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Schame {
+public class Schema {
     Map<String, String> schames;
 
-    public Schame(String schameConfig) {
+    public Schema(String schameConfig) {
 
         schames = new HashMap<>();
         Arrays.asList(schameConfig.split(","))

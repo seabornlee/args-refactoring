@@ -2,15 +2,15 @@ package tdd.args;
 
 
 public class Args {
-    private final Schame schame;
+    private final Schema schema;
     private final Command command;
 
-    public Args(String schame, String command) {
-        this.schame = new Schame(schame);
+    public Args(String schema, String command) {
+        this.schema = new Schema(schema);
         this.command = new Command(command);
     }
 
     public Object getValue(String name) {
-        return schame.getValue(name, command.getValue(name));
+        return schema.getValue(name, command.getValue(name));
     }
 }

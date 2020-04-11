@@ -32,7 +32,7 @@ public class ArgsTest {
     }
 
     @Test
-    public void value_type_not_match_schame() {
+    public void value_type_not_match_schema() {
         Args args = new Args("l:boolean,p:int,d:String", "-l 123 -p int -d /user/local");
         assertEquals(args.getValue("l"), "只能输入Boolean类型的值");
         assertEquals(args.getValue("p"), "只能输入Integer类型的值");
