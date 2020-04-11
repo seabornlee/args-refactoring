@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.ListIterator;
 import java.util.Map;
 
+import static java.lang.Character.isDigit;
 import static java.util.Arrays.asList;
 
 public class Command {
@@ -35,13 +36,14 @@ public class Command {
         return keyValueMap.get(name);
     }
 
-    private boolean isValue(String value) {
-        if (value.charAt(0) == PARAM_NAME_PREFIX.charAt(0)) {
-            if (value.length() > 2) {
+    private boolean isValue(String string) {
+        if (string.startsWith(PARAM_NAME_PREFIX)) {
+            if (string.length() > 2) {
                 return true;
             }
-            return value.charAt(1) >= '0' && value.charAt(1) <= '9';
+            return isDigit(string.charAt(1));
         }
         return true;
     }
+
 }
